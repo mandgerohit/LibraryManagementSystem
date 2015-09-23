@@ -1,0 +1,25 @@
+<% provide(:isbn, @book.isbn)%>
+<% provide(:title, @book.title)%>
+<% provide(:author, @book.author)%>
+<% provide(:description, @book.description)%>
+<% provide(:status, @book.status)%>
+<% provide(:status, @book.taken_by)%>
+<div class="row">
+  <aside class="col-md-8">
+    <section class="book_info">
+      <h1>
+<li><%= isbn=@book.isbn %></li>
+<li><%= title=@book.title %></li>
+<li><%= author=@book.author %></li>
+<li><%= description=@book.description %></li>
+<% if status=@book.status?%>
+<li>Status: Available</li>
+<%= link_to "Checkout", book_path, method: :post %>
+<% else %>
+<li>Status: Not Available</li>
+<li>Taken by: <%= @book.taken_by %></li>
+<% end %>
+</h1>
+    </section>
+  </aside>
+</div>

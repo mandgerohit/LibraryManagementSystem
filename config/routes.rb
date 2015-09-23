@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :books  
+  get 'books/new'
+  get 'addbook'  => 'books#new'
+  get 'sessions/new'
+  root 'static_pages#home'
+  get 'static_pages/help'
+  get 'users/new'
+  get 'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  post  'books/:id'  => 'books#togglebookstatus'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

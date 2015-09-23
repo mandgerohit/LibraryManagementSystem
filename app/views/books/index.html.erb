@@ -1,0 +1,19 @@
+<% provide(:title, 'All Books') %>
+<h1>
+<%= link_to "Add Books", addbook_path %>
+</h1>
+<h1>All Library Books</h1>
+
+<ul class="books">
+  <% @books.each do |book| %>
+    <li>
+      <%= link_to book.title, book %>
+      <%= book.author %>
+      <% if current_user.admin?%> | <%= link_to "delete", book, method: :delete, data: { confirm: "Confirm?" } %>
+<% end %>
+      <% if book.status?%> | <%= "Available to checkout"%>
+<% else %> | <%= "Checked out" =%>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
