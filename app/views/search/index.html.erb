@@ -1,6 +1,12 @@
 <% provide(:title, 'All users') %>
+<h1>
+<%= form_tag(users_search_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Universal Search for Users by Name/Email ID" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+</h1>
 
-<h1>All Library users</h1>
+<h1>Library users</h1>
 
 <ul class="users">
   <% @users.each do |user| %>

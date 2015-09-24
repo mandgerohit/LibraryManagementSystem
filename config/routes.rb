@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+get 'users/admins' => 'admins#index'
+get 'users/members' => 'members#index'
+get 'users/search' => 'search#index'
   get 'checkout_logs/new'
   get 'checkout_logs/show'
   resources :checkout_logs
@@ -6,7 +9,7 @@ Rails.application.routes.draw do
   resources :books  
   get 'checkout_logs/:id'  => 'checkout_logs#index'
   get 'checkout_user'  => 'checkout_logs#checkout'
-  post 'users/:id'  => 'users#removeadminstatus'
+  post 'users/:id'  => 'users#removestatus'
   get 'books/new'
   get 'addbook'  => 'books#new'
   get 'sessions/new'

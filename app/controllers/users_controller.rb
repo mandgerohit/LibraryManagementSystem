@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :right_user, only: [:edit, :update]
-  before_action :admin_user, only: [:destroy, :removeadminstatus]
+  before_action :admin_user, only: [:destroy, :removeadminstatus, :removememberstatus]
 
   def index
     @users=User.all
@@ -17,18 +17,27 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end  
 
-  def removeadminstatus
+def removestatus
   @user = User.find(params[:id])
-  if @user.admin==true
-  @user.update_attribute(:admin, false)
-  flash[:success] = "The admin user is removed successfully!"
+  type=params[:type]
+  if type=="admin"
+    if @user.admin==true
+       @user.update_attribute(:admin, false)
+       flash[:success] = "The admin user is removed successfully!"
+    end
+  else
+    if @user.member==true
+       @user.update_attribute(:member, false)
+       flash[:success] = "The member user is removed successfully!"
+    end
   end
   if @user.save
       redirect_to users_url
       else
       render 'new'
-    end
   end
+end
+
 
   def checkout
     @user = User.find(params[:id])
