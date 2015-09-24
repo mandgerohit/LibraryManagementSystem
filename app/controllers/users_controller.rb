@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end  
 
+  def checkout
+    @user = User.find(params[:id])
+    @checkout_book = CheckoutLog.find(params[:id])
+    @checkout_logs = CheckoutLog.all
+  end
+
   def new
   @user= User.new
   end
