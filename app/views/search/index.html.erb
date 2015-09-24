@@ -15,8 +15,8 @@
      <% if current_user.admin?%>
 <% if user.admin?%> <%= link_to "Remove Admin", user ,:action => :removestatus, :id => user.id, :type => "admin",method: :post, data: { confirm: "Confirm?" } %> | 
 <% end %> 
-<% if user.member?%> <%= link_to "Remove Member", user,:action => :removestatus, :id => user.id, :type => "member", method: :post, data: { confirm: "Confirm?" } %> 
-<% end %> | 
+<% if user.member?%> <%= link_to "Remove Member", user,:action => :removestatus, :id => user.id, :type => "member", method: :post, data: { confirm: "Confirm?" } %> |
+<% end %> 
 <%= link_to "Delete User", user, method: :delete, data: { confirm: "Confirm?" } %>
       <% end %>
     </li>

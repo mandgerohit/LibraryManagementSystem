@@ -12,7 +12,6 @@ class CheckoutLogsController < ApplicationController
 
   def checkout
     @user = User.find(params[:id])
-    @checkout_book = CheckoutLog.find(params[:id])
     @checkout_logs = CheckoutLog.all
   end
 
