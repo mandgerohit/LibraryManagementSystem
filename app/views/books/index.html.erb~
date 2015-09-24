@@ -1,8 +1,6 @@
 <% provide(:title, 'All Books') %>
 <h1>
-<% if current_user.admin?%>
 <%= link_to "Add Books", addbook_path %>
-<% end %>
 </h1>
 <h1>All Library Books</h1>
 

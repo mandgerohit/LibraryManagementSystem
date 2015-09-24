@@ -1,6 +1,7 @@
 <% provide(:title, 'All users') %>
 <h1>
-<% if current_user.admin?%> | <%= link_to "Add Users", signup_path %>
+<% if current_user.admin?%>
+<li><%= link_to "Add Users", signup_path %></li>
 <% end %>
 </h1>
 <h1>All Library users</h1>

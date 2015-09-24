@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'checkout_logs/new'
   get 'checkout_logs/show_user'
   get 'checkout_logs/show'
+  get 'checkout_logs/index'
   resources :checkout_logs
   resources :users
   resources :books  

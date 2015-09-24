@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.string :password_confirmation
-      t.string :checkout_history
 
       t.timestamps null: false
     end

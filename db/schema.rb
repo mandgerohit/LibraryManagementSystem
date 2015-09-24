@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923193326) do
+ActiveRecord::Schema.define(version: 20150923224330) do
 
   create_table "books", force: :cascade do |t|
     t.string   "isbn",             limit: 255
@@ -20,9 +20,16 @@ ActiveRecord::Schema.define(version: 20150923193326) do
     t.string   "description",      limit: 255
     t.boolean  "status"
     t.string   "taken_by",         limit: 255
-    t.string   "checkout_history", limit: 255
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "checkout_history", limit: 255, default: "{}"
+  end
+
+  create_table "checkout_logs", force: :cascade do |t|
+    t.string   "book",       limit: 255
+    t.string   "user",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,9 +37,9 @@ ActiveRecord::Schema.define(version: 20150923193326) do
     t.string   "email",                 limit: 255
     t.string   "password",              limit: 255
     t.string   "password_confirmation", limit: 255
-    t.string   "checkout_history",      limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.string   "checkout_history",      limit: 255, default: "{}"
     t.string   "password_digest",       limit: 255
     t.string   "remember_digest",       limit: 255
     t.boolean  "admin",                             default: false

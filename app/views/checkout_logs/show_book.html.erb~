@@ -1,0 +1,9 @@
+<% provide(:title, @user.name)%>
+<% provide(:title, @user.email)%>
+<h1>
+  <%= @user.name %>
+  <%= @user.email %>
+  <% if current_user.admin?%>
+  <li><%= link_to "View History", signup_path %></li>
+  <% end %>
+</h1>

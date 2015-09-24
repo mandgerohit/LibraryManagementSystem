@@ -7,8 +7,6 @@ class CreateBooks < ActiveRecord::Migration
       t.string :description
       t.boolean :status
       t.string :taken_by
-      t.string :checkout_history
-
       t.timestamps null: false
     end
   end

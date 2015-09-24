@@ -11,13 +11,12 @@ class BooksController < ApplicationController
   @checkout_log = CheckoutLog.new
   @checkout_log.book=@book.title
   @checkout_log.user=current_user.name
-  @checkout_log.save 
   flash[:success] = "The book is Checked out successfully!"
   else
   @book.update_attribute(:status, true)
   flash[:success] = "The book is returned successfully!"
   end
-  if @book.save
+  if @book.save && @checkout_log.save 
       redirect_to @book
       else
       render 'new'

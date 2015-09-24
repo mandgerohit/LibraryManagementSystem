@@ -1,0 +1,12 @@
+<% provide(:title, 'Checkout History') %>
+
+<h1>Checkout History</h1>
+<ul class="checkout_logs">
+  <% @checkout_logs.each do |checkout_log| %>
+  <% if (checkout_log.book == @book.title) && current_user.admin? %>
+    <li>
+      <%= checkout_log.book %> | <%= checkout_log.user %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

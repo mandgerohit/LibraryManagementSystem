@@ -9,7 +9,7 @@
     <section class="book_info">
       <h1>
 <% if current_user.admin? %>
-<li><%= link_to "View History", checkout_log_path %></li>
+<li><%= link_to "View History", checkout_logs_show_book_path %></li>
 <% end %>
 <li><%= isbn=@book.isbn %></li>
 <li><%= title=@book.title %></li>

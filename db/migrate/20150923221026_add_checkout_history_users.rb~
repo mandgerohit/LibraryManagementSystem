@@ -1,0 +1,4 @@
+class AddCheckoutHistoryUsers < ActiveRecord::Migration
+  def change
+  end
+end

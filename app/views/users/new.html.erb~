@@ -21,7 +21,7 @@
       <%= f.select :admin, options_for_select([['Yes', true], ['No', false]]), class: 'form-control' %>
 
       <%= f.label :member, "Is member?" %>
-      <%= f.select :member, options_for_select([['Yes', true], ['No', false]]), class: 'form-control' %>
+      <%= f.select :admin, options_for_select([['Yes', true], ['No', false]]), class: 'form-control' %>
 
       <%= f.submit "Create Account", class: "btn btn-primary" %>
     <% end %>

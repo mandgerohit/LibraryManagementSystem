@@ -5,8 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.string :password_confirmation
-      t.boolean :member
-      t.string :checkout_history
+      t.string :checkout_history, array: true, default: '{}
 
       t.timestamps null: false
     end
