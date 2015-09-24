@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 get 'users/admins' => 'admins#index'
 get 'users/members' => 'members#index'
 get 'users/search' => 'search#index'
+get 'books/search' => 'books#search'
   get 'checkout_logs/new'
   get 'checkout_logs/show'
   resources :checkout_logs
