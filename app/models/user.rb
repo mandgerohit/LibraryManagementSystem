@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+def self.search(query)
+  where("name like ? or email like ?", "%#{query}%", "%#{query}%") 
+end
+
 serialize :checkout_history 
 attr_accessor :remember_token
 validates(:name, presence: true)

@@ -1,5 +1,11 @@
 <% provide(:title, 'All users') %>
 <h1>
+
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Universal Search for Users by Name/Email ID" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
 <% if current_user.admin?%>
 <li><%= link_to "Add Users", signup_path %></li>
 <% end %>
