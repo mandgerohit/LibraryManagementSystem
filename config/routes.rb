@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :books  
   get 'checkout_logs/:id'  => 'checkout_logs#index'
   get 'checkout_user'  => 'checkout_logs#checkout'
+  post 'users/:id'  => 'users#removeadminstatus'
   get 'books/new'
   get 'addbook'  => 'books#new'
   get 'sessions/new'
