@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 serialize :checkout_history 
 attr_accessor :remember_token
 validates(:name, presence: true)

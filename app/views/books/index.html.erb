@@ -1,5 +1,12 @@
 <% provide(:title, 'All Books') %>
+
 <h1>
+
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Universal Search for Books by ISBN/Title/Author/Description" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
 <% if current_user.admin?%>
 <%= link_to "Add Books", addbook_path %>
 <% end %>
