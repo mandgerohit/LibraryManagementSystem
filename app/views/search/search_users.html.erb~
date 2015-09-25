@@ -1,4 +1,0 @@
-<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Universal Search for Users by Name/Email ID" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>

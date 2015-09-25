@@ -9,9 +9,14 @@
       <% if user.admin?%>
       <%= link_to user.name, user %> |
      <% if current_user.admin?%>
-<% if user.admin?%> <%= link_to "Remove Admin", user_path(:id => user.id, :type => "admin") ,:controller => "admins" ,:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %>
+<% if user.admin?%>
+<% if !(current_user.id==user.id) %>
+<%= link_to "Remove Admin", user_path(:id => user.id, :type => "admin") ,:controller => "admins" ,:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %>
+<% end %>
 <% end %> | 
+<% if !(current_user.id==user.id) %>
 <%= link_to "Delete User", user, method: :delete, data: { confirm: "Confirm?" } %>
+<% end %>
       <% end %>
 <% end %>
     </li>

@@ -1,4 +1,0 @@
-class AddCheckoutHistoryBooks < ActiveRecord::Migration
-  def change
-  end
-end

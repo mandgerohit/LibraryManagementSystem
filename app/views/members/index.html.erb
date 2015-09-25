@@ -5,14 +5,19 @@
 <ul class="users">
   <% @users.each do |user| %>
 <h5>
-    <li>
-      <% if user.member?%>
-      <%= link_to user.name, user %> |
-     <% if current_user.admin?%>
-<% if user.member?%> <%= link_to "Remove Member", user_path(:id => user.id, :type => "member"),:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %> 
+<li>
+<% if user.member?%>
+<%= link_to user.name, user %> |
+<% if current_user.admin?%>
+<% if user.member?%>
+<% if !(current_user.id==user.id) %>
+<%= link_to "Remove Member", user_path(:id => user.id, :type => "member"),:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %> 
+<% end %>
 <% end %> | 
+<% if !(current_user.id==user.id) %>
 <%= link_to "Delete User", user, method: :delete, data: { confirm: "Confirm?" } %>
-      <% end %>
+<% end %>
+<% end %>
 <% end %>
     </li>
 </h5>

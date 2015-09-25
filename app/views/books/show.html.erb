@@ -8,7 +8,9 @@
   <aside class="col-md-8">
     <section class="book_info">
 <% if current_user.admin? %>
+<% if CheckoutLog.find_by_book(@book.title) %>
 <h4><%= link_to "View History", checkout_log_path %></h4>
+<% end %>
 <h4><%= link_to "Update Book Details", edit_book_path(@book) %></h4>
 <% end %>
 <h4><%= "ISBN: " %><font color=black><%= isbn=@book.isbn %></font></h4>
