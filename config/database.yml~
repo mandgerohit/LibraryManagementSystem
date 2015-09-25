@@ -50,8 +50,5 @@ test:
 production:
   <<: *default
   database: library_management_system_production
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  host:   <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:   <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  username: library_management_system
+  password: <%= ENV['LIBRARY_MANAGEMENT_SYSTEM_DATABASE_PASSWORD'] %>

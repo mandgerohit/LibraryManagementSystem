@@ -1,29 +1,4 @@
 Rails.application.routes.draw do
-get 'users/admins' => 'admins#index'
-get 'users/members' => 'members#index'
-get 'users/search' => 'search#index'
-get 'books/search' => 'books#search'
-  get 'checkout_logs/new'
-  get 'checkout_logs/show'
-  resources :checkout_logs
-  resources :users
-  resources :books  
-  get 'checkout_logs/:id'  => 'checkout_logs#index'
-  get 'checkout_user'  => 'checkout_logs#checkout'
-  post 'users/:id'  => 'users#removestatus'
-  post 'users/admins/:id'  => 'admins#removestatus'
-  get 'books/new'
-  get 'addbook'  => 'books#new'
-  get 'sessions/new'
-  root 'static_pages#home'
-  get 'static_pages/about'
-  get 'users/new'
-  get 'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-  post  'books/:id'  => 'books#togglebookstatus'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
