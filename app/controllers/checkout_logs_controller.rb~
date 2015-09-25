@@ -5,9 +5,13 @@ class CheckoutLogsController < ApplicationController
   end
  
   def show
-    #if (@back_url == "/user/#{:id}")
-    @user = User.find(params[:id])
     @book = Book.find(params[:id])
+    @checkout_book = CheckoutLog.find(params[:id])
+    @checkout_logs = CheckoutLog.all
+  end
+
+  def checkout
+    @user = User.find(params[:id])
     @checkout_book = CheckoutLog.find(params[:id])
     @checkout_logs = CheckoutLog.all
   end

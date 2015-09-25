@@ -38,7 +38,6 @@ def removestatus
   end
 end
 
-
   def checkout
     @user = User.find(params[:id])
     @checkout_book = CheckoutLog.find(params[:id])

@@ -5,7 +5,7 @@
   <% @checkout_logs.each do |checkout_log| %>
   <% if (checkout_log.book == @book.title) %>
     <li>
-      <%= checkout_log.book %> | <%= checkout_log.user %>
+      <h4><%= checkout_log.user %> | <%= checkout_log.created_at %></h4>
       <% end %>
     </li>
   <% end %>

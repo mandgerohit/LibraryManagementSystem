@@ -4,19 +4,31 @@ class BooksController < ApplicationController
   before_action :logged_in_user, only: [:togglebookstatus, :returnbook]
 
   def togglebookstatus
+  email=params[:email]
   @book = Book.find(params[:id])
+  
   if @book.status==true
   @book.update_attribute(:status, false)
-  @book.update_attribute(:taken_by, current_user.name)
+  if params[:type]=="self"
+  @book.update_attribute(:taken_by, current_user.email)
+  else
+  @book.update_attribute(:taken_by, email)
+  end
   @checkout_log = CheckoutLog.new
   @checkout_log.book=@book.title
-  @checkout_log.user=current_user.name
+  if params[:type]=="self"
+  @checkout_log.user=current_user.email
+  else
+  @checkout_log.user=email
+  end
   @checkout_log.save 
   flash[:success] = "The book is Checked out successfully!"
+  
   else
   @book.update_attribute(:status, true)
   flash[:success] = "The book is returned successfully!"
   end
+  
   if @book.save
       redirect_to @book
       else
@@ -48,6 +60,10 @@ end
 
   def new
   @book = Book.new
+  end
+
+  def edit
+    @book = Book.find(params[:id])
   end
 
   def create

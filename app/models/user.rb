@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
 
+validates(:name, presence: true)
+validates(:email, presence: true, uniqueness: { case_sensitive: false })
+
 def self.search(query)
   where("name like ? or email like ?", "%#{query}%", "%#{query}%") 
 end
 
 serialize :checkout_history 
 attr_accessor :remember_token
-validates(:name, presence: true)
-validates(:email, presence: true, uniqueness: { case_sensitive: false })
+
 
 has_secure_password
   def User.digest(string)

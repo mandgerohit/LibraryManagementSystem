@@ -1,16 +1,20 @@
 <% provide(:title, 'All users') %>
-<h1>
-<% if current_user.admin?%> | <%= link_to "Add Users", signup_path %>
-<% end %>
-</h1>
+
 <h1>All Library users</h1>
 
 <ul class="users">
   <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %>
-      <% if current_user.admin?%> | <%= link_to "delete", user, method: :delete, data: { confirm: "Confirm?" } %>
-      <% end %>
-    </li>
-  <% end %>
+<h5>
+<li>
+      <%= link_to user.name, user %> |
+     <% if current_user.admin?%>
+<% if user.admin?%> <%= link_to "Remove Admin", user_path(:id => user.id, :type => "admin") , :action => :removestatus, method: :post, data: { confirm: "Confirm?" } %> |
+<% end %> 
+<% if user.member?%> <%= link_to "Remove Member", user_path(:id => user.id, :type => "member"), :action => :removestatus, method: :post, data: { confirm: "Confirm?" } %> |
+<% end %>  
+<%= link_to "Delete User", user, method: :delete, data: { confirm: "Confirm?" } %>
+<% end %>
+</li>
+<% end %>
+</h5>
 </ul>

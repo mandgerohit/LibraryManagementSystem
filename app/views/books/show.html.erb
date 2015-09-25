@@ -7,31 +7,43 @@
 <div class="row">
   <aside class="col-md-8">
     <section class="book_info">
-      <h1>
 <% if current_user.admin? %>
-<li><%= link_to "View History", checkout_log_path %></li>
+<h4><%= link_to "View History", checkout_log_path %></h4>
+<h4><%= link_to "Update Book Details", edit_book_path(@book) %></h4>
 <% end %>
-<li><%= isbn=@book.isbn %></li>
-<li><%= title=@book.title %></li>
-<li><%= author=@book.author %></li>
-<li><%= description=@book.description %></li>
+<h4><%= "ISBN: " %><font color=black><%= isbn=@book.isbn %></font></h4>
+<h4><%= "Title: " %><font color=black><%= title=@book.title %></font></h4>
+<h4><%= "Author: " %><font color=black><%= author=@book.author %></font></h4>
+<h4><%= "Description: " %><font color=black><%= description=@book.description %></font></h4>
 
 <% if @book.status?%>
-<li>Status: Available</li>
-<%= link_to "Checkout", book_path, method: :post %>
+<h4><%= "Status: " %><font color=green><%= "Available" %></font></h4>
+
+<% if current_user.member?%>
+<h4><%= button_to "Checkout for yourself", book_path(:id => @book.id, :type => "self"), method: :post %></h4>
+<% end %>
+<% if current_user.admin?%>
+<h4><%= form_tag(book_path, :method => "post", :type => "other",id: @book.id) do %>
+  <%= text_field_tag :email, params[:email], placeholder: "Email ID" %>
+  <%= submit_tag "Checkout on behalf of", :name => nil %>
+<% end %>
+</h4>
+<% end %>
+
 <% else %>
 
-<% if @book.taken_by==current_user.name or current_user.admin? %>
-<%= link_to "Return", book_path, method: :post %>
-<% else %>
-<li>Status: Not Available</li>
-<% end %>
 <% if current_user.admin? %>
-<li>Taken by: <%= @book.taken_by %></li>
-<% end %>
+<h4><%= "Taken By " %><font color=black><%= @book.taken_by %></font></h4>
 <% end %>
 
-</h1>
+<% if @book.taken_by==current_user.email or current_user.admin? %>
+<h4><%= button_to "Return Book", book_path, method: :post %></h4>
+<% else %>
+<h4><%= "Status: " %><font color=red><%= "Not Available" %></font></h4>
+<% end %>
+
+<% end %>
+
     </section>
   </aside>
 </div>

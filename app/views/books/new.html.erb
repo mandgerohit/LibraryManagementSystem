@@ -4,17 +4,18 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@book) do |f| %>
+      <%= render 'shared/error_book_messages' %>
       <%= f.label :isbn %>
-      <%= f.text_field :isbn %>
+      <%= f.text_field :isbn, class: 'form-control' %>
 
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: 'form-control' %>
 
       <%= f.label :author %>
-      <%= f.text_field :author %>
+      <%= f.text_field :author, class: 'form-control' %>
 
       <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= f.text_field :description, class: 'form-control' %>
 
       <%= f.submit "Add Book", class: "btn btn-primary" %>
     <% end %>

@@ -1,0 +1,22 @@
+<% provide(:title, "Home") %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %> | Library Management System Application</title>
+  </head>
+  <body>
+    <h1>Library Management System Application</h1>
+    <p>
+     This is the home page for NCSU Library Management System
+    </p>
+  </body>
+<div class="center jumbotron">
+  <h1><strong>Welcome to the NCSU Libraries<strong></h1>
+
+  <h2>
+    Library Management System
+  </h2>
+
+</div>
+<%= image_tag("ncstate2.png", :alt => "rss feed") %>
+</html>

@@ -3,9 +3,9 @@
 <h1>Checkout History</h1>
 <ul class="checkout_logs">
   <% @checkout_logs.each do |checkout_log| %>
-  <% if (checkout_log.user == @user.name) %>
+  <% if (checkout_log.user == @user.email) %>
     <li>
-      <%= checkout_log.book %> | <%= checkout_log.user %>
+      <h4><%= checkout_log.book %> | <%= checkout_log.created_at %></h4>
       <% end %>
     </li>
   <% end %>

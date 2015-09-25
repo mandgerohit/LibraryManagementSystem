@@ -13,7 +13,7 @@ class MembersController < ApplicationController
     @user = User.find(params[:id])
   end  
 
-def removestatus
+  def removestatus
   @user = User.find(params[:id])
     if @user.member==true
        @user.update_attribute(:member, false)

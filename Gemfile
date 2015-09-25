@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
-
+gem 'pg' , '0.15.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Bundle bcrypt gem
 gem 'bcrypt', '3.1.7'
 #custom CSS
 gem 'bootstrap-sass', '3.2.0.0'
+
 #For Creating Sample Users
 gem 'faker', '1.4.2'
 # Use mysql as the database for Active Record
@@ -47,5 +48,12 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
 end
 
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
+end
+
+ruby "2.2.3"

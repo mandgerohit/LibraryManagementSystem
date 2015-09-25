@@ -1,12 +1,11 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "sample app", '#', id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Help",   '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<footer class="footer">
+  <small>
+  <%= image_tag("ncstate4.png", :alt => "NC State") %>
+  NCSU Library Management System  
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "About", static_pages_about_path %></li>
+    </ul>
+  </nav>
+</footer>

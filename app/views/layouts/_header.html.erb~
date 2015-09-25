@@ -1,0 +1,54 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "NCSU Libraries", root_path, id: "logo" %>
+    <%= image_tag("NCSU_logo.gif", :alt => "rss feed") %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <% if logged_in? %>
+        <% if current_user.admin? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Users <b class="caret"></b>
+            </a>
+          <ul class="dropdown-menu">
+              <li><%= link_to "All Users", users_path, :controller => "user" %></li>
+              <li><%= link_to "Add Users", signup_path, :controller => "user" %></li>
+              <li><%= link_to "Admin Users", users_admins_path, :controller => "user" %></li>
+              <li><%= link_to "Member Users", users_members_path, :controller => "user" %></li>
+              <li><%= link_to "Search", users_search_path, :controller => "search" %></li>
+            </ul>
+          </li>
+	  <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Books <b class="caret"></b>
+            </a>
+          <ul class="dropdown-menu">
+              <li><%= link_to "All Books", books_path, :controller => "book" %></li>
+              <% if current_user.admin? %>
+              <li><%= link_to "Add Books", addbook_path, :controller => "book" %></li>
+              <% end %>
+              <li><%= link_to "Search Books", books_search_path, :controller => "book" %></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "User Details", current_user %></li>
+              <li><%= link_to "Update Profile", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

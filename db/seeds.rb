@@ -12,7 +12,7 @@ User.create!(name:  "Rohit Mandge",
              password_confirmation: "Superrohit@2010",
              admin: true,
              member: true,
-	     checkout_history: {}	)
+	)
 
 #15.times do |n|
 #  name  = Faker::Name.name

@@ -1,6 +1,5 @@
 class AdminsController < ApplicationController
 
-
   def index
     @users=User.all
     if params[:search]
