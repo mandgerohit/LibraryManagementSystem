@@ -1,0 +1,44 @@
+<% provide(:title, 'All users') %>
+<h4>
+<div class="input-group" align="center">
+<%= form_tag(users_search_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search User" %>
+  <%= submit_tag "Search", class: "btn_search", :name => nil %>
+<% end %>
+</div>
+
+</h4>
+<h2><font color=black>Library users</form></h2>
+
+<table style="width:100%">
+<tr>
+<h5>
+    <th>User Name</th>
+    <th>Delete User</th>
+</h5>
+</tr>
+
+<ul class="users">
+<% @users.each do |user| %>
+<tr>
+<% if !user.super?%>
+
+<td>
+<%= link_to user.name, user %>
+</td>
+<% if current_user.admin?%>
+
+<td>
+<% if !(current_user.id==user.id) %>
+<% if (user.book_taken==false) %>
+<%= link_to "Delete User", user, method: :delete, data: { confirm: "Confirm?" } %>
+<% else %>
+<%= "User has checked out a book" %>
+<% end %>
+<% end %>
+</td>
+<% end %>
+</tr>
+<% end %>
+<% end %>
+</ul>

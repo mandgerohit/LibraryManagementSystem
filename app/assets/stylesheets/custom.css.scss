@@ -165,6 +165,15 @@ input {
   }
 }
 
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;    
+}
+th, td {
+    padding: 15px;
+    
+}
+
 #session_remember_me {
   width: auto;
   margin-left: 0;

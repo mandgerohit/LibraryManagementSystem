@@ -2,24 +2,41 @@
 
 <h1>Admin Library users</h1>
 
-<ul class="users">
-  <% @users.each do |user| %>
+<table style="width:100%">
+  <tr>
 <h5>
-    <li>
-      <% if user.admin?%>
-      <%= link_to user.name, user %> |
-     <% if current_user.admin?%>
-<% if user.admin?%>
-<% if !(current_user.id==user.id) %>
-<%= link_to "Remove Admin", user_path(:id => user.id, :type => "admin") ,:controller => "admins" ,:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %>
-<% end %>
-<% end %> | 
-<% if !(current_user.id==user.id) %>
-<%= link_to "Delete User", user, method: :delete, data: { confirm: "Confirm?" } %>
-<% end %>
-      <% end %>
-<% end %>
-    </li>
+    <th>User Name</th>
+    <th>Remove Admin Rights</th> 
 </h5>
-  <% end %>
+  </tr>
+
+<ul class="users">
+<% @users.each do |user| %>
+<tr>
+<% if !user.super?%>
+<% if user.admin?%>
+<td>
+<%= link_to user.name, user %>
+</td>
+
+<% if current_user.admin?%>
+<% if user.admin?%>
+
+<td>
+<% if !(current_user.id==user.id) %>
+<% if (user.book_taken==false) %>
+<%= link_to "Remove Admin", user_path(:id => user.id, :type => "admin") ,:controller => "admins" ,:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %>
+<% else %>
+<%= "User has checked out a book" %>
+<% end %>
+<% end %>
+</td>
+
+<% end %> 
+<% end %>
+<% end %>
+<% end %>
+</tr>
+<% end %>
 </ul>
+</table>

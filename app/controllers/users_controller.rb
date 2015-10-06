@@ -24,17 +24,22 @@ def removestatus
     if @user.admin==true
        @user.update_attribute(:admin, false)
        flash[:success] = "The admin user is removed successfully!"
+       if @user.save
+       redirect_to admins_url
+       else
+       render 'new'
+       end
     end
   else
     if @user.member==true
        @user.update_attribute(:member, false)
        flash[:success] = "The member user is removed successfully!"
+       if @user.save
+       redirect_to members_url
+       else
+       render 'new'
+       end
     end
-  end
-  if @user.save
-      redirect_to users_url
-      else
-      render 'new'
   end
 end
 
@@ -52,9 +57,17 @@ end
     @user = User.new(user_params)
     if @user.save
     flash[:success] = "User Created Successfully!!"
+    if !current_user.nil? 
     redirect_to @user
     else
+    redirect_to login_url
+    end
+    else
+      if !current_user.nil?
       render 'new'
+      else
+      render 'members/new'
+      end
     end
   end
 

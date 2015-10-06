@@ -1,0 +1,46 @@
+<% provide(:title, 'All Books') %>
+
+<h1>All Library Books</h1>
+
+<table style="width:100%">
+<tr>
+<h5>
+    <th>Book Name</th>
+    <th>Author Name</th>
+    <th>Checkout Status</th>
+    <% if current_user.admin?%>
+    <th>Delete Book</th>
+    <% end %>
+</h5>
+</tr>
+
+<ul class="books">
+<% @books.each do |book| %>
+<tr>
+<td>
+<%= link_to book.title, book %>
+</td>
+<td>
+<font color="black"><%= book.author %></font>
+</td>
+<td>
+<% if book.status? %>
+<font color="green"><%= "Available to checkout"%></font>
+<% else %>
+<font color="red"><%= "Checked out" =%></font>
+<% end %>
+</td>
+
+<% if current_user.admin? %>
+
+<td>
+<% if book.status? %>
+<%= link_to "delete", book, method: :delete, data: { confirm: "Confirm?" } %>
+<% end %>
+</td>
+<% end %>
+
+</tr>
+<% end %>
+</ul>
+</table>

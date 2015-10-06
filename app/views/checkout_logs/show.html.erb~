@@ -1,0 +1,32 @@
+<% provide(:title, 'Checkout History') %>
+
+<h1>Checkout History</h1>
+
+<table style="width:100%">
+<tr>
+<h5>
+    <th>User</th>
+    <th>Checkout Time</th>
+</h5>
+</tr>
+
+<ul class="checkout_logs">
+<% @checkout_logs.each do |checkout_log| %>
+<tr>
+
+
+<% if (checkout_log.book == @book.title) %>
+<td>
+<h4><%= checkout_log.user %>
+</td>
+
+<td>
+<%= checkout_log.created_at %></h4>
+</td>
+
+<% end %>
+
+</tr>
+<% end %>
+</ul>
+</table>

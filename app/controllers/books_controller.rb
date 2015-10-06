@@ -5,15 +5,30 @@ class BooksController < ApplicationController
 
   def togglebookstatus
   email=params[:email]
+  @user1=User.find_by(email: params[:email])
   @book = Book.find(params[:id])
   
   if @book.status==true
-  @book.update_attribute(:status, false)
+  
   if params[:type]=="self"
   @book.update_attribute(:taken_by, current_user.email)
+  current_user.update_attribute(:book_taken, true)
+  count = current_user.book_count
+  current_user.update_attribute(:book_count, count+1)
+  @book.update_attribute(:status, false)
   else
+  if !@user1.nil?
   @book.update_attribute(:taken_by, email)
+  @user1.update_attribute(:book_taken, true)
+  count = @user1.book_count
+  @user1.update_attribute(:book_count, count+1)
+  @book.update_attribute(:status, false)
+  else
+  flash[:danger] = "Enter valid user Email ID"
+  redirect_to @book and return
   end
+  end
+
   @checkout_log = CheckoutLog.new
   @checkout_log.book=@book.title
   if params[:type]=="self"
@@ -26,7 +41,15 @@ class BooksController < ApplicationController
   
   else
   @book.update_attribute(:status, true)
+  email2 = @book.taken_by
+  @user2=User.find_by(email: email2)
+  count2 = @user2.book_count
+  @user2.update_attribute(:book_count, count2-1)
+  if @user2.book_count==0
+  @user2.update_attribute(:book_taken, false)
+  end
   flash[:success] = "The book is returned successfully!"
+  
   end
   
   if @book.save
@@ -43,7 +66,7 @@ class BooksController < ApplicationController
   else
     @books = Book.all.order('created_at DESC')
   end
-end
+  end
 
   def search
     @books=Book.all

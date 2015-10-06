@@ -1,0 +1,38 @@
+<% provide(:title, 'All users') %>
+
+<h1>Member Library users</h1>
+
+<table style="width:100%">
+<tr>
+<h5>
+<th>User Name</th>
+<th>Remove Member Rights</th>
+</h5>
+</tr>
+
+<ul class="users">
+<% @users.each do |user| %>
+<tr>
+<% if !user.super?%>
+<% if user.member?%>
+<td>
+<%= link_to user.name, user %>
+</td>
+<% if current_user.admin?%>
+<% if user.member?%>
+<td>
+<% if !(current_user.id==user.id) %>
+<% if (user.book_taken==false) %>
+<%= link_to "Remove Member", user_path(:id => user.id, :type => "member"),:action => :removestatus, method: :post, data: { confirm: "Confirm?" } %> 
+<% end %>
+<% end %>
+</td>
+
+<% end %> 
+<% end %>
+<% end %>
+<% end %>
+</tr>
+<% end %>
+</ul>
+</table>

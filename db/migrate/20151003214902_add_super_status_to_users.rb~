@@ -1,0 +1,4 @@
+class AddSuperStatusToUsers < ActiveRecord::Migration
+  def change
+  end
+end

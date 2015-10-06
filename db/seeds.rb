@@ -6,12 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "Rohit Mandge",
-             email: "rnmandge@ncsu.edu",
-             password:              "Superrohit@2010",
-             password_confirmation: "Superrohit@2010",
+User.create!(name:  "Super User",
+             email: "super@ncsu.edu",
+             password:              "Superuser",
+             password_confirmation: "Superuser",
              admin: true,
              member: true,
+             super: true,
 	)
 
 #15.times do |n|
