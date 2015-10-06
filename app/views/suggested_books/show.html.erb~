@@ -1,0 +1,29 @@
+<% provide(:title, 'Suggest History') %>
+
+<h1>Suggest History</h1>
+
+<table style="width:100%">
+<tr>
+<h5>
+    <th>ISBN</th>
+    <th>Suggested By</th>
+</h5>
+</tr>
+
+<ul class="suggested_books">
+<% @suggested_books.each do |suggested_book| %>
+<tr>
+
+<td>
+<%= suggested_book.isbn %>
+</td>
+
+<td>
+<%= suggested_book.suggested_by %>
+</td>
+
+
+</tr>
+<% end %>
+</ul>
+</table>
