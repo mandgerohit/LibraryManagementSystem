@@ -48,6 +48,11 @@ class BooksController < ApplicationController
   if @user2.book_count==0
   @user2.update_attribute(:book_taken, false)
   end
+  @subscribe_list = Subscribe.where(:user => current_user.email).where(:book => @book.title)
+  @subscribe_list.each do |i|
+    SubscribeMailer.sample_email(i.user,i.book).deliver_now
+    i.destroy
+  end
   flash[:success] = "The book is returned successfully!"
   
   end

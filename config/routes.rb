@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
     get 'suggested_books/suggest'
+    get 'subscribes/create'
     get 'users/admins' => 'admins#index'
     get 'users/members' => 'members#index'
     get 'users/search' => 'search#index'
@@ -9,10 +10,12 @@ Rails.application.routes.draw do
     get 'checkout_logs/show'
     get 'suggest' => 'suggested_books#suggest'
     get 'approve' => 'suggested_books#index'
+    post 'subscribe' => 'subscribes#create'
     resources :checkout_logs
     resources :users
     resources :books
     resources :suggested_books
+    resources :subscribes
     get 'checkout_logs/:id'  => 'checkout_logs#index'
     get 'checkout_user'  => 'checkout_logs#checkout'
     post 'users/:id'  => 'users#removestatus'
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
     get 'static_pages/about'
     get 'users/new'
     get 'signup'  => 'users#new'
+    get 'membersignup'  => 'members#new'
     get    'login'   => 'sessions#new'
     post   'login'   => 'sessions#create'
     delete 'logout'  => 'sessions#destroy'
