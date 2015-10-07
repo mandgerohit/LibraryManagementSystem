@@ -1,28 +1,23 @@
-== README
+This README would normally document whatever steps are necessary to get the application up and running.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Here is the link for the deployed application.
 
-Things you may want to cover:
+frozen-headland-8611.herokuapp.com/
 
-* Ruby version
+NOTE: PLEASE DO NOT CHANGE THESE DEFAULT USER DETAILS AS EVERYONE WILL BE FOLLOWING THIS README FILE.
 
-* System dependencies
+1) Super User Details Email ID: super@ncsu.edu Password: Super@123
 
-* Configuration
+2) Admin User Details Email ID: admin@ncsu.edu Password: Admin@123
 
-* Database creation
+3) Member User Details Email ID: member@ncsu.edu Password: Member@123
 
-* Database initialization
+Functionalities:
 
-* How to run the test suite
+As of now, all the functionalities in the rubric are done. Along with that Suggestion feature is also implemented.
 
-* Services (job queues, cache servers, search engines, etc.)
+Some of the important features are as follows
 
-* Deployment instructions
+a) Super user cannot be deleted. b) Admin user can create other Admins and Members. c) Admin can checkout books on behalf of other users. d) Members can checkout books and return. e) Admins can check user and books details along with checkout history. f) Member or book cannot be deleted once he check outs that book. g) Members can give suggestions and admins can approve or disapprove the requests.
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Rest of the features are present in the rubric. Please refer rubric.
