@@ -45,7 +45,7 @@
 		<h4><%= "Status: " %><font color=red><%= "Not Available" %></font></h4>
 	<% end %>
 
-	<% if @book.taken_by!=current_user.email and current_user.member? %>
+	<% if @book.taken_by!=current_user.email or current_user.member? %>
 		<h4><%= button_to "Subscribe For Book Availability", subscribe_path(:book=>@book.title), method: :post %></h4>
 	<% end %>
 <% end %>
