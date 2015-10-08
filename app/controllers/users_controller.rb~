@@ -35,7 +35,7 @@ def removestatus
        @user.update_attribute(:member, false)
        flash[:success] = "The member user is removed successfully!"
        if @user.save
-       redirect_to users_url
+       redirect_to members_url
        else
        render 'new'
        end

@@ -20,7 +20,7 @@ class MembersController < ApplicationController
        flash[:success] = "The Member user is removed successfully!"
     end
   if @user.save
-      redirect_to users_members_url
+      redirect_to users_members_path
       else
       render 'new'
   end
