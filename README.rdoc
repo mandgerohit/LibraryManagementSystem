@@ -14,10 +14,27 @@ NOTE: PLEASE DO NOT CHANGE THESE DEFAULT USER DETAILS AS EVERYONE WILL BE FOLLOW
 
 Functionalities:
 
-As of now, all the functionalities in the rubric are done. Along with that Suggestion feature is also implemented.
+As of now, all the functionalities in the rubric are done. Along with that, Suggestion feature and the Subscription feature from the extra credits part are also implemented. Once the user logs in , all the options are available to him/her on the top right option bar. The options will be depending on the entitlement of the user i.e. only member or only admin or both
 
 Some of the important features are as follows
 
-a) Super user cannot be deleted. b) Admin user can create other Admins and Members. c) Admin can checkout books on behalf of other users. d) Members can checkout books and return. e) Admins can check user and books details along with checkout history. f) Member or book cannot be deleted once he check outs that book. g) Members can give suggestions and admins can approve or disapprove the requests.
+a) Super user cannot be deleted. 
+b) Admin user can create other Admins and Members. 
+c) Admin can checkout books on behalf of other users. 
+d) Members can checkout books and return. 
+e) Admins can check user and books details along with checkout history. 
+f) Member or book cannot be deleted once he check outs that book. 
+g) Members can give suggestions and admins can approve or disapprove the requests.
+h) There will be no impact to the user history if a book that he/she had previously checked-out is deleted
+i) There will be no impact to book history if the user who had previously taken the book and returned is deleted from system
+j) The email feature might not be working on the deployed environment as it was meant to work only on development environment.
+k) The search functionality consists of a single textbox and whatever is entered there is searched against title, description, authors and status and returned as a single list containing the records that match.
+l) The admin an checkout and return a book on behalf of a member. Even if an admin checks out or returns a book on behalf of a library member, the information captured in your database should be same as if the book was checked out by the library member itself
+m) A book cannot be deleted if checked-out and so is the same for the member.
+n) A user is automatically unsubscribed from the book subscribed list once the book becomes available (and the email is sent). For the user to track the book again if the book gets checked-out again, he/she needs to subscribe again
+o) The user can subscibe a book only once before any book status chenge
+p) Multiple users can give similar suggestion for the same book and it is for the admin to decide which to accept and decline or accept after editing. 
+q) No history of suggestions is kept once the suggestion is accepted or declined by admin
+r) An admin can also suggest a book if he is also a member.
 
 Rest of the features are present in the rubric. Please refer rubric.
